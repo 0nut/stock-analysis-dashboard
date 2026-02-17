@@ -6,6 +6,12 @@
 
 An end-to-end stock analysis project that combines a reproducible research notebook with an interactive Streamlit dashboard. It pulls historical market data from Yahoo Finance via `yfinance`, computes key performance and risk metrics (returns, volatility, correlations, Sharpe ratio, moving averages), and visualizes insights with clean, recruiter-friendly charts.
 
+## Live App
+
+Use the hosted dashboard for the fastest experience:
+
+**https://stock-analysis-dashboard-0nut.streamlit.app**
+
 ## Features
 
 ### Notebook analysis (`notebooks/`)
@@ -59,6 +65,9 @@ Correlation matrix, risk vs return scatter plot, and rolling volatility analysis
 Detailed exploratory data analysis with code and visualizations.
 
 ## Installation & Setup
+
+If you only want to use the app, open the live link above.  
+Use local setup if you want to run the project from source, reproduce results, or develop new features.
 
 ### 1) Clone the repository
 
