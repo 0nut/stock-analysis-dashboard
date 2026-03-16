@@ -2,8 +2,8 @@ name: Keep Streamlit Alive
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # 每2小時執行一次
-  workflow_dispatch:        # 允許手動觸發
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
 
 jobs:
   ping:
@@ -24,20 +24,16 @@ jobs:
           (async () => {
             const browser = await chromium.launch();
             const page = await browser.newPage();
-            console.log('Navigating to Streamlit app...');
             await page.goto('https://stock-analysis-dashboard-0nut.streamlit.app', {
               waitUntil: 'networkidle',
               timeout: 120000,
             });
             console.log('Page title:', await page.title());
-            // If app is sleeping, click the wake-up button
             const wakeBtn = page.locator('text=Yes, get this app back up!');
             if (await wakeBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
-              console.log('App was sleeping — clicking wake button...');
               await wakeBtn.click();
               await page.waitForTimeout(30000);
             }
-            console.log('Done.');
             await browser.close();
           })();
           EOF
